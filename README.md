@@ -11,7 +11,7 @@ Status: not complete (RnD only)
 
 ## Few words about it...
     
-1. All 34 projects assemled in one solution  
+1. All 34 projects "assembled" in one solution  
 2. Project dependancies updated 
 3. Minimal code refactoring (lite bugfixing) 
 4. All binaries and dlls targeted to common /bin 
