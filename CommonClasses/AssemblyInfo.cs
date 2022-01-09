@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: Extension]
+//[assembly: Extension]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Lumia Software Updater Pro")]
 [assembly: AssemblyCopyright("Copyright © 2014 Microsoft Mobile")]

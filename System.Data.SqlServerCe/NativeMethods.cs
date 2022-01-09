@@ -69,7 +69,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     internal static void LoadNativeBinaries()
     {
       try
@@ -103,7 +103,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public static bool IsValidBinary(string filename)
     {
       bool flag = HashProvider.MatchHash(filename);

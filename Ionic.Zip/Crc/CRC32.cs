@@ -50,7 +50,7 @@ namespace Ionic.Crc
 
     public int ComputeCrc32(int W, byte B) => this._InternalComputeCrc32((uint) W, B);
 
-    internal int _InternalComputeCrc32(uint W, byte B) => (int) this.crc32Table[(IntPtr) (uint) (((int) W ^ (int) B) & (int) byte.MaxValue)] ^ (int) (W >> 8);
+    internal int _InternalComputeCrc32(uint W, byte B) => (int) this.crc32Table[(int)(IntPtr) (uint) (((int) W ^ (int) B) & (int) byte.MaxValue)] ^ (int) (W >> 8);
 
     public void SlurpBlock(byte[] block, int offset, int count)
     {
@@ -60,7 +60,7 @@ namespace Ionic.Crc
       {
         int index2 = offset + index1;
         byte num = block[index2];
-        this._register = !this.reverseBits ? this._register >> 8 ^ this.crc32Table[(IntPtr) (this._register & (uint) byte.MaxValue ^ (uint) num)] : this._register << 8 ^ this.crc32Table[(IntPtr) (this._register >> 24 ^ (uint) num)];
+        this._register = !this.reverseBits ? this._register >> 8 ^ this.crc32Table[(int)(IntPtr) (this._register & (uint) byte.MaxValue ^ (uint) num)] : this._register << 8 ^ this.crc32Table[(int)(IntPtr) (this._register >> 24 ^ (uint) num)];
       }
       this._TotalBytesRead += (long) count;
     }
@@ -68,9 +68,9 @@ namespace Ionic.Crc
     public void UpdateCRC(byte b)
     {
       if (this.reverseBits)
-        this._register = this._register << 8 ^ this.crc32Table[(IntPtr) (this._register >> 24 ^ (uint) b)];
+        this._register = this._register << 8 ^ this.crc32Table[(int)(IntPtr) (this._register >> 24 ^ (uint) b)];
       else
-        this._register = this._register >> 8 ^ this.crc32Table[(IntPtr) (this._register & (uint) byte.MaxValue ^ (uint) b)];
+        this._register = this._register >> 8 ^ this.crc32Table[(int)(IntPtr) (this._register & (uint) byte.MaxValue ^ (uint) b)];
     }
 
     public void UpdateCRC(byte b, int n)
@@ -80,12 +80,12 @@ namespace Ionic.Crc
         if (this.reverseBits)
         {
           uint num = this._register >> 24 ^ (uint) b;
-          this._register = this._register << 8 ^ this.crc32Table[num >= 0U ? (IntPtr) num : (IntPtr) (num + 256U)];
+          this._register = this._register << 8 ^ this.crc32Table[(int)(num >= 0U ? (IntPtr) num : (IntPtr) (num + 256U))];
         }
         else
         {
           uint num = this._register & (uint) byte.MaxValue ^ (uint) b;
-          this._register = this._register >> 8 ^ this.crc32Table[num >= 0U ? (IntPtr) num : (IntPtr) (num + 256U)];
+          this._register = this._register >> 8 ^ this.crc32Table[(int)(num >= 0U ? (IntPtr) num : (IntPtr) (num + 256U))];
         }
       }
     }

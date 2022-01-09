@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Markup;
 
-[assembly: Extension]
+//[assembly: Extension]
 [assembly: AssemblyConfiguration("")]
 [assembly: Guid("c5f19cda-fe5e-4c84-8f36-1afe15e399b1")]
 [assembly: AssemblyTitle("GalaSoft.MvvmLight.Extras")]

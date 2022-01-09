@@ -74,7 +74,7 @@ namespace System.Data.SqlServerCe
     ~MetaData() => this.Dispose(false);
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     private void Dispose(bool disposing)
     {
       lock (this.thisLock)

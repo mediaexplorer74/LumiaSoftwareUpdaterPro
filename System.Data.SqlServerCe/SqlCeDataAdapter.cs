@@ -36,10 +36,10 @@ namespace System.Data.SqlServerCe
     {
       if (!disposing)
         return;
-      this.DeleteCommand = (DbCommand) null;
-      this.SelectCommand = (DbCommand) null;
-      this.InsertCommand = (DbCommand) null;
-      this.UpdateCommand = (DbCommand) null;
+      this.DeleteCommand = (SqlCeCommand)(DbCommand) null;
+      this.SelectCommand = (SqlCeCommand)(DbCommand) null;
+      this.InsertCommand = (SqlCeCommand)(DbCommand) null;
+      this.UpdateCommand = (SqlCeCommand)(DbCommand) null;
     }
 
     public SqlCeDataAdapter(string selectCommandText, SqlCeConnection selectConnection)
@@ -54,28 +54,28 @@ namespace System.Data.SqlServerCe
       GC.SuppressFinalize((object) this);
     }
 
-    public SqlCeCommand DeleteCommand
+    public new SqlCeCommand DeleteCommand
     {
       get => base.DeleteCommand as SqlCeCommand;
-      set => this.DeleteCommand = (DbCommand) value;
+      set => this.DeleteCommand = (SqlCeCommand)(DbCommand) value;
     }
 
-    public SqlCeCommand InsertCommand
+    public new SqlCeCommand InsertCommand
     {
       get => base.InsertCommand as SqlCeCommand;
-      set => this.InsertCommand = (DbCommand) value;
+      set => this.InsertCommand = (SqlCeCommand)(DbCommand) value;
     }
 
-    public SqlCeCommand SelectCommand
+    public new SqlCeCommand SelectCommand
     {
       get => base.SelectCommand as SqlCeCommand;
-      set => this.SelectCommand = (DbCommand) value;
+      set => this.SelectCommand = (SqlCeCommand)(DbCommand) value;
     }
 
-    public SqlCeCommand UpdateCommand
+    public new SqlCeCommand UpdateCommand
     {
       get => base.UpdateCommand as SqlCeCommand;
-      set => this.UpdateCommand = (DbCommand) value;
+      set => this.UpdateCommand = (SqlCeCommand)(DbCommand) value;
     }
 
     public event SqlCeRowUpdatedEventHandler RowUpdated

@@ -22,8 +22,12 @@ namespace Ionic.Zip
       string comment,
       ZipContainer container)
     {
-      if (s is ZipSegmentedStream zipSegmentedStream)
-        zipSegmentedStream.ContiguousWrite = true;
+      ZipSegmentedStream zipSegmentedStream = null;
+        if (s is ZipSegmentedStream)
+        {
+            //zipSegmentedStream.ContiguousWrite = true;
+            
+        }
       long num1 = 0;
       using (MemoryStream memoryStream = new MemoryStream())
       {

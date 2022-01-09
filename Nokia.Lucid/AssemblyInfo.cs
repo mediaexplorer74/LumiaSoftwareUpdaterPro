@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyInformationalVersion("1.0.0")]
 [assembly: InternalsVisibleTo("DynamicMockAssembly")]
 [assembly: InternalsVisibleTo("Nokia.Lucid.UnitTests")]
-[assembly: Extension]
+//[assembly: Extension]
 [assembly: AssemblyDescription("The Nokia Lucid core library provides core connectivity services for Windows Phone 8 products.")]
 [assembly: AssemblyCompany("Nokia")]
 [assembly: AssemblyProduct("Nokia Lucid")]

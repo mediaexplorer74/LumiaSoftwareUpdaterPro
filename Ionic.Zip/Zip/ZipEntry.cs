@@ -2878,18 +2878,24 @@ label_8:
         num59 += this._Extra.Length;
       }
       this._LengthOfHeader = num59;
-      if (s is ZipSegmentedStream zipSegmentedStream)
+
+      ZipSegmentedStream zipSegmentedStream = null;
+      
+      if (s is ZipSegmentedStream)
       {
         zipSegmentedStream.ContiguousWrite = true;
         uint segment = zipSegmentedStream.ComputeSegment(num59);
         this._future_ROLH = (int) segment == (int) zipSegmentedStream.CurrentSegment ? zipSegmentedStream.Position : 0L;
         this._diskNumber = segment;
       }
+
       if (this._container.Zip64 == Zip64Option.Default && (uint) this._RelativeOffsetOfLocalHeader >= uint.MaxValue)
         throw new ZipException("Offset within the zip archive exceeds 0xFFFFFFFF. Consider setting the UseZip64WhenSaving property on the ZipFile instance.");
       s.Write(buffer, 0, num59);
+      
       if (zipSegmentedStream != null)
         zipSegmentedStream.ContiguousWrite = false;
+      
       this._EntryHeader = buffer;
     }
 

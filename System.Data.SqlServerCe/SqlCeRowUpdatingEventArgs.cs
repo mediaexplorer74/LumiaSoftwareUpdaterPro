@@ -24,7 +24,7 @@ namespace System.Data.SqlServerCe
     public SqlCeCommand Command
     {
       get => (SqlCeCommand) base.Command;
-      set => this.Command = (IDbCommand) value;
+      set => this.Command = (SqlCeCommand)(IDbCommand) value;
     }
   }
 }

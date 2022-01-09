@@ -22,7 +22,7 @@ namespace System.Data.SqlServerCe
     static SqlCeEngine() => KillBitHelper.ThrowIfKillBitIsSet();
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public SqlCeEngine()
     {
       NativeMethods.LoadNativeBinaries();
@@ -47,7 +47,7 @@ namespace System.Data.SqlServerCe
     ~SqlCeEngine() => this.Dispose(false);
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     private void Dispose(bool disposing)
     {
       if (this.isDisposed)
@@ -112,7 +112,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     private void Repair(SEFIXOPTION option, string dstConnStr, RepairOption repairOption)
     {
       int lcid = 0;
@@ -239,7 +239,7 @@ namespace System.Data.SqlServerCe
       throw new InvalidOperationException(Res.GetString("SQLCE_ConnectionStringNotInitialized"));
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     public void CreateDatabase()
     {
@@ -258,12 +258,15 @@ namespace System.Data.SqlServerCe
       MEOPENINFO meopeninfo = new MEOPENINFO();
       try
       {
-        num2 = Marshal.AllocCoTaskMem(sizeof (MEOPENINFO));
+        num2 = Marshal.AllocCoTaskMem(32);//(sizeof (MEOPENINFO));
+        
         if (IntPtr.Zero == num2)
           throw new OutOfMemoryException();
+        
         object connToken1 = this.connTokens["Locale Identifier"];
         if (connToken1 != null)
           num1 = (int) connToken1;
+        
         object connToken2 = this.connTokens["Encryption Mode"];
         if (connToken2 != null)
           str1 = (string) connToken2;

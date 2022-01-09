@@ -208,12 +208,22 @@ namespace System.Data.SqlServerCe
     }
 
     internal unsafe DBStatus StatusValue
-    {
-      [SecurityCritical] get => (DBStatus) *(int*) (this.pValueArray[this.index] + (ulong) this.dbbindings[this.bindingIndx].obStatus);
-      [SecurityCritical] set => *(int*) (this.pValueArray[this.index] + (ulong) this.dbbindings[this.bindingIndx].obStatus) = (int) value;
-    }
+        {
+            [SecurityCritical]
+            get
+            {
+                // (DBStatus)
+                return (DBStatus)(*(int*)(this.pValueArray[this.index] + (ulong)this.dbbindings[this.bindingIndx].obStatus));
+            }
 
-    [SecurityCritical]
+            [SecurityCritical]
+            set
+            {
+                *(int*)(this.pValueArray[this.index] + (ulong)this.dbbindings[this.bindingIndx].obStatus) = (int)value;
+            }
+        }
+
+        [SecurityCritical]
     private Exception CheckTypeValueStatusValue(Type type)
     {
       if (this.StatusValue == DBStatus.S_OK)
@@ -312,7 +322,7 @@ namespace System.Data.SqlServerCe
               case SETYPE.FLOAT:
                 return (object) *(double*) (this.pValueArray[this.index] + (ulong) this.dbbindings[this.bindingIndx].obValue);
               case SETYPE.MONEY:
-                return (object) ((Decimal) *(long*) (this.pValueArray[this.index] + (ulong) this.dbbindings[this.bindingIndx].obValue) / 10000M);
+                return (object) ( *(long*) (this.pValueArray[this.index] + (ulong) this.dbbindings[this.bindingIndx].obValue) / 10000M);
               case SETYPE.NUMERIC:
                 return (object) this.Value_NUMERIC;
               case SETYPE.ROWVERSION:

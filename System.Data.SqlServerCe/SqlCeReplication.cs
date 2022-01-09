@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace System.Data.SqlServerCe
 {
-  [SecurityCritical(SecurityCriticalScope.Everything)]
+  //[SecurityCritical(SecurityCriticalScope.Everything)]
   [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
   public sealed class SqlCeReplication : IDisposable
   {

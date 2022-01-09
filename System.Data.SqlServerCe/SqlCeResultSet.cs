@@ -83,7 +83,9 @@ namespace System.Data.SqlServerCe
 
     internal IList<int> BookmarkArray
     {
-      [SecurityCritical, SecurityTreatAsSafe] get
+            //, SecurityTreatAsSafe
+      [SecurityCritical] 
+      get
       {
         if (!this.Scrollable)
           throw new InvalidOperationException(Res.GetString("SQLCE_CursorNotScrollable"));
@@ -134,7 +136,7 @@ namespace System.Data.SqlServerCe
 
     protected IList GetList() => (IList) new ResultSetView(this);
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     internal bool GotoRow(int hBookmark)
     {
@@ -383,16 +385,22 @@ namespace System.Data.SqlServerCe
 
     protected override void OnMove()
     {
-      if (this.sqlUpdatableRecord == null)
-        return;
-      foreach (ColumnUpdatedStatus columnUpdatedStatus in this.sqlUpdatableRecord.ColumnsUpdatedStatus)
-        columnUpdatedStatus = ColumnUpdatedStatus.None;
+        if (this.sqlUpdatableRecord == null)
+        {
+            return;
+        }
+            
+        foreach (ColumnUpdatedStatus columnUpdatedStatus in this.sqlUpdatableRecord.ColumnsUpdatedStatus)
+        {
+            this.sqlUpdatableRecord.ColumnsUpdatedStatus[(int)columnUpdatedStatus] = ColumnUpdatedStatus.None;
+        }
     }
 
     internal SqlCeUpdatableRecord GetCurrentRecord()
     {
       if (!this.isInitialized)
         this.InitializeMetaData();
+
       SqlCeUpdatableRecord ceUpdatableRecord = new SqlCeUpdatableRecord(this.metadata, (object[]) null, true, 0, this.fieldNameLookup);
       for (int ordinal = 0; ordinal < this.FieldCount; ++ordinal)
       {
@@ -406,13 +414,17 @@ namespace System.Data.SqlServerCe
     {
       if (!this.Updatable)
         throw new InvalidOperationException(Res.GetString("SQLCE_CursorNotUpdatable"));
+      
       if (!this.isInitialized)
         this.InitializeMetaData();
+      
       if (this.sqlUpdatableRecord != null)
         return;
+      
       if (!this.isInitialized)
         this.InitializeMetaData();
-      this.sqlUpdatableRecord = new SqlCeUpdatableRecord(this.metadata, (object[]) null, true, 0, this.fieldNameLookup);
+      
+       this.sqlUpdatableRecord = new SqlCeUpdatableRecord(this.metadata, (object[]) null, true, 0, this.fieldNameLookup);
     }
 
     private bool HasColumnChanged(int ordinal)

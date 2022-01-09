@@ -121,7 +121,7 @@ namespace System.Data.SqlServerCe
 
     private static bool FindIfWebHosted()
     {
-      flag7 = false;
+      bool flag7 = false;
       foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
       {
         if (assembly.FullName.StartsWith("System.Web", StringComparison.Ordinal) && assembly.GlobalAssemblyCache)
@@ -133,8 +133,10 @@ namespace System.Data.SqlServerCe
             if (property != null)
             {
               object obj = property.GetValue((object) type, (object[]) null);
-              if (obj == null || !(obj is bool flag7))
+
+              if (obj == null || !(obj is bool)) // flag7
                 break;
+              
               break;
             }
             break;

@@ -4,7 +4,7 @@
 // MVID: E5A69774-90A6-4202-AB96-618C2EE657B8
 // Assembly location: C:\ProgramData\Microsoft\Lumia Software Updater Pro\Bin\SoftwareRepository.dll
 
-using Microsoft.WindowsAzure.Storage.Blob;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,6 +16,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace SoftwareRepository.Reporting
 {
@@ -116,7 +117,20 @@ namespace SoftwareRepository.Reporting
         foreach (string filePath1 in filePaths)
         {
           string filePath = filePath1;
-          await new CloudBlockBlob(new Uri(await this.GetReportUploadLocationAsync(manufacturerName, manufacturerProductLine, reportClassification, Path.GetFileName(filePath), cancellationToken))).UploadFromFileAsync(filePath, FileMode.Open);
+          await new CloudBlockBlob
+          (
+              new Uri
+              (
+                  await this.GetReportUploadLocationAsync
+                  (
+                      manufacturerName, 
+                      manufacturerProductLine, 
+                      reportClassification, 
+                      Path.GetFileName(filePath), 
+                      cancellationToken
+                  )
+              )
+          ).UploadFromFileAsync(filePath); //(filePath, FileMode.Open)
           filePath = (string) null;
         }
       }

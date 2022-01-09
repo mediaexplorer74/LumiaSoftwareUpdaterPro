@@ -272,22 +272,37 @@ label_7:
 
     internal void OnEventNameChanged(string oldEventName, string newEventName)
     {
-      if (this.AssociatedObject == null)
-        return;
-      if (this.Source is FrameworkElement source && string.Compare(oldEventName, "Loaded", StringComparison.Ordinal) == 0)
-        this.UnregisterLoaded(source);
-      else if (!string.IsNullOrEmpty(oldEventName))
-        this.UnregisterEvent(this.Source, oldEventName);
-      if (source != null && string.Compare(newEventName, "Loaded", StringComparison.Ordinal) == 0)
-      {
-        this.RegisterLoaded(source);
-      }
-      else
-      {
-        if (string.IsNullOrEmpty(newEventName))
-          return;
-        this.RegisterEvent(this.Source, newEventName);
-      }
+        if (this.AssociatedObject == null)
+        {
+            return;
+        }
+
+        if 
+            (this.Source is FrameworkElement//source
+            &&
+            string.Compare(oldEventName, "Loaded", StringComparison.Ordinal) == 0
+        )
+        {
+            this.UnregisterLoaded((FrameworkElement)this.Source);//(source);
+        }
+        else if (!string.IsNullOrEmpty(oldEventName))
+        {
+            this.UnregisterEvent(this.Source, oldEventName);
+        }
+
+        if (this.Source != null && string.Compare(newEventName, "Loaded", StringComparison.Ordinal) == 0)
+        {
+            this.RegisterLoaded((FrameworkElement)this.Source);
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(newEventName))
+            {
+                return;
+            }
+
+            this.RegisterEvent(this.Source, newEventName);
+        }
     }
   }
 }

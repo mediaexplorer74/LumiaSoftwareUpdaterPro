@@ -427,7 +427,7 @@ namespace Microsoft.Windows.ImageTools
       ConsoleEx.Instance.UpdateStatus(device, DeviceStatus.FLASHING, (object) null);
       device.ProgressEvent += new EventHandler<ProgressEventArgs>(FFUTool.Device_ProgressEvent);
       device.EndTransfer();
-      device.FlashFFUFile(ffuFilePath, optimize);
+            device.FlashFFUFile(ffuFilePath);//, optimize);
     }
 
     private static void DoWimFlash(FlashParam param)
@@ -479,7 +479,8 @@ namespace Microsoft.Windows.ImageTools
         throw new ArgumentNullException(nameof (param));
       try
       {
-        uint num = param.Device.SetBootMode(param.BootMode, param.ProfileName);
+                // =param.Device.SetBootMode(param.BootMode, param.ProfileName);
+        uint num = 0U;//param.Device.SetBootMode(param.BootMode, param.ProfileName);
         if (num == 0U)
         {
           ConsoleEx.Instance.UpdateStatus(param.Device, DeviceStatus.MESSAGE, (object) Resources.RESET_BOOT_MODE);

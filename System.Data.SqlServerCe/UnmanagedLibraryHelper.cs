@@ -27,7 +27,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public TDelegate GetUnmanagedFunction<TDelegate>(string functionName) where TDelegate : class
     {
       IntPtr procAddress = UnmanagedLibraryHelper.SafeLibrary_NativeMethods.GetProcAddress(this.m_hLibrary, functionName);

@@ -630,7 +630,7 @@ namespace System.Data.SqlServerCe
       if (this.isOpened)
         throw new InvalidOperationException(Res.GetString("ADP_ConnectionAlreadyOpen", (object) ConnectionState.Open.ToString()));
       MEOPENINFO meopeninfo = new MEOPENINFO();
-      IntPtr num9 = Marshal.AllocCoTaskMem(sizeof (MEOPENINFO));
+            IntPtr num9 = Marshal.AllocCoTaskMem(32);//(sizeof (MEOPENINFO));
       if (IntPtr.Zero == num9)
         throw new OutOfMemoryException();
       try

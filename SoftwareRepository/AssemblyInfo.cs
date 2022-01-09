@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: Extension]
+//[assembly: Extension]
 [assembly: AssemblyTitle("SoftwareRepository")]
 [assembly: AssemblyDescription("Software Repository Windows Library")]
 [assembly: AssemblyConfiguration("")]

@@ -36,7 +36,9 @@ namespace Microsoft.Windows.ImageTools
       }
     }
 
-    public void Initialize(ICollection<IFFUDevice> devices)
+        public Guid DeviceUniqueID { get; private set; }
+
+        public void Initialize(ICollection<IFFUDevice> devices)
     {
       int height = devices.Count * 6 + 100;
       if (Console.BufferHeight < height)
@@ -65,8 +67,9 @@ namespace Microsoft.Windows.ImageTools
 
     public void UpdateProgress(ProgressEventArgs progress)
     {
-      Tuple<int, ProgressReporter> deviceRow = this.deviceRows[progress.Device.DeviceUniqueID];
-      string progressDisplay = deviceRow.Item2.CreateProgressDisplay(progress.Position, progress.Length);
+      //RnD
+      Tuple<int, ProgressReporter> deviceRow = this.deviceRows[DeviceUniqueID]; //progress.Device.DeviceUniqueID
+            string progressDisplay = deviceRow.Item2.CreateProgressDisplay(progress.Position, progress.Length);
       lock (ConsoleEx.syncRoot)
         this.WriteLine(progressDisplay, this.GetDeviceCursorPosition(deviceRow.Item1, DeviceStatusPosition.DeviceProgress), true);
     }

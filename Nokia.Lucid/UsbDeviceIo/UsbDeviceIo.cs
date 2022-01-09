@@ -101,13 +101,13 @@ namespace Nokia.Lucid.UsbDeviceIo
       }
     }
 
-    private static byte[] GetNewBuffer(uint length) => new byte[(IntPtr) length];
+    private static byte[] GetNewBuffer(uint length) => new byte[(int)(IntPtr) length];
 
     private void Receiver(CancellationToken ct)
     {
       using (EntryExitLogger.Log("UsbDeviceIo.Receiver(CancellationToken ct)", (TraceSource) UsbDeviceIoTraceSource.Instance))
       {
-        byte[] data = new byte[new IntPtr(1048576)];
+        byte[] data = new byte[(int)(new IntPtr(1048576))];
         while (!ct.IsCancellationRequested)
         {
           try

@@ -24,9 +24,11 @@ namespace FFUComponents
         eventWatcher = this,
         contextEvent = new ManualResetEvent(false)
       };
+
       new Thread((ParameterizedThreadStart) (a =>
       {
         bool flag = false;
+
         do
         {
           try
@@ -50,15 +52,21 @@ namespace FFUComponents
         }
         while (!flag);
       })).Start((object) usbFormArgs1);
+
       usbFormArgs1.contextEvent.WaitOne();
     }
 
     private void Dispose(bool fDisposing)
     {
-      if (!fDisposing)
+    if (!fDisposing)
+    {
         return;
-      this.runningContext.MainForm.BeginInvoke((Delegate) (() => this.runningContext.MainForm.Close())).AsyncWaitHandle.WaitOne();
-      this.runningContext.ExitThread();
+    }
+      
+      //this.runningContext.MainForm.BeginInvoke((Delegate)(() => this.runningContext.MainForm.Close())).AsyncWaitHandle
+      //                            .WaitOne();
+      
+            this.runningContext.ExitThread();
       this.runningContext = (ApplicationContext) null;
     }
 

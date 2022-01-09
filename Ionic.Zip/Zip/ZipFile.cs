@@ -1788,7 +1788,9 @@ namespace Ionic.Zip
           }
           if (this._saveOperationCanceled)
             return;
-          this._numberOfSegmentsForMostRecentSave = this.WriteStream is ZipSegmentedStream writeStream4 ? writeStream4.CurrentSegment : 1U;
+
+          ZipSegmentedStream writeStream4 = null;
+          this._numberOfSegmentsForMostRecentSave = this.WriteStream is ZipSegmentedStream ? writeStream4.CurrentSegment : 1U;
           bool flag2 = ZipOutput.WriteCentralDirectoryStructure(this.WriteStream, zipEntries, this._numberOfSegmentsForMostRecentSave, this._zip64, this.Comment, new ZipContainer((object) this));
           this.OnSaveEvent(ZipProgressEventType.Saving_AfterSaveTempArchive);
           this._hasBeenSaved = true;

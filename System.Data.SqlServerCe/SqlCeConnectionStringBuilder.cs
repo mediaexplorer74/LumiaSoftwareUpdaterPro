@@ -662,7 +662,7 @@ namespace System.Data.SqlServerCe
         return typeof (InstanceDescriptor) == destinationType && value is SqlCeConnectionStringBuilder options ? (object) SqlCeConnectionStringBuilder.SqlCeConnectionStringBuilderConverter.ConvertToInstanceDescriptor(options) : base.ConvertTo(context, culture, value, destinationType);
       }
 
-      [SecurityTreatAsSafe]
+      //[SecurityTreatAsSafe]
       [SecurityCritical]
       private static InstanceDescriptor ConvertToInstanceDescriptor(
         SqlCeConnectionStringBuilder options)

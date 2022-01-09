@@ -216,6 +216,7 @@ namespace System.Data.SqlServerCe
     {
       get
       {
+        SqlDecimal sqlDecimal_4;
         if (this.precision == (byte) 0 && this.SqlDbType == SqlDbType.Decimal)
         {
           object obj = this.Value;
@@ -224,13 +225,14 @@ namespace System.Data.SqlServerCe
             switch (obj)
             {
               case Decimal num4:
-                sqlDecimal4 = new SqlDecimal(num4);
+                sqlDecimal_4 = new SqlDecimal(num4);
                 goto label_5;
               case SqlDecimal sqlDecimal4:
-label_5:
-                return sqlDecimal4.Precision;
+             label_5:
+                sqlDecimal_4 = (SqlDecimal)((IConvertible)obj).ToDecimal((IFormatProvider)null);
+                return sqlDecimal_4.Precision;//sqlDecimal4.Precision;
               default:
-                sqlDecimal4 = (SqlDecimal) ((IConvertible) obj).ToDecimal((IFormatProvider) null);
+                sqlDecimal_4 = (SqlDecimal) ((IConvertible) obj).ToDecimal((IFormatProvider) null);
                 goto label_5;
             }
           }
@@ -250,8 +252,11 @@ label_5:
 
     public byte Scale
     {
+      
       get
       {
+        SqlDecimal sqlDecimal_4;
+        
         byte scale = this.scale;
         if (scale == (byte) 0 && this.SqlDbType == SqlDbType.Decimal)
         {
@@ -261,14 +266,17 @@ label_5:
             switch (obj)
             {
               case Decimal num4:
-                sqlDecimal4 = new SqlDecimal(num4);
+                sqlDecimal_4 = new SqlDecimal(num4);
                 goto label_5;
+
               case SqlDecimal sqlDecimal4:
 label_5:
-                scale = sqlDecimal4.Scale;
+               sqlDecimal_4 = new SqlDecimal(4);
+                scale = sqlDecimal_4.Scale;
                 break;
+
               default:
-                sqlDecimal4 = (SqlDecimal) ((IConvertible) obj).ToDecimal((IFormatProvider) null);
+                sqlDecimal_4 = (SqlDecimal) ((IConvertible) obj).ToDecimal((IFormatProvider) null);
                 goto label_5;
             }
           }

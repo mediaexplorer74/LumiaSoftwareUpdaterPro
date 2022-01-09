@@ -4,7 +4,8 @@
 // MVID: C70B08F8-E577-41D6-BDC6-D5E26E362355
 // Assembly location: C:\ProgramData\Microsoft\Lumia Software Updater Pro\Bin\GalaSoft.MvvmLight.Extras.WPF4.dll
 
-using Microsoft.Practices.ServiceLocation;
+//using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using System;
 
 namespace GalaSoft.MvvmLight.Ioc

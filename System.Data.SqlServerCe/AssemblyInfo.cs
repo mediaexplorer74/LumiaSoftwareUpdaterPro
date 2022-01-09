@@ -17,5 +17,5 @@ using System.Security.Permissions;
 [assembly: AssemblyProduct("Microsoft® SQL Server® Compact")]
 [assembly: AssemblyCopyright("© Microsoft® Corporation. All rights reserved.")]
 [assembly: AssemblyVersion("4.0.0.1")]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = true)]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+//[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = true)]
+//[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]

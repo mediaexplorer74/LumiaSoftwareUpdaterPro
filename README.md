@@ -1,4 +1,23 @@
 # Lumia Software Updater Pro
+
+This is fork of Empyreal96's LumiaSoftwareUpdaterPro_Decompiled Project 
+
+Status: not complete (RnD only)
+
+## Some "shots"
+![](Images/shot0.png)
+![](Images/shot1.png)
+
+
+## Few words about it...
+    
+1. All 34 projects assemled in one solution  
+2. Project dependancies updated 
+3. Minimal code refactoring (lite bugfixing) 
+4. All binaries and dlls targeted to common /bin 
+
+
+# About the original
 Most components of "Lumia Software Updater Pro" decompiled with help of JetBrains dotpeek.
 
 
@@ -48,4 +67,14 @@ Wp8EmergencyFlash
 Wp8OemFlasher
 Wp8RdcManager
 ```
+
+### Contribute!
+There's still a TON of things missing from this proof-of-concept (MVP) and areas of improvement 
+
+With best wishes,
+
+  [m][e] 2022
+
+Lumia Software Updater Pro is RnD project only. AS-IS. No support. Distributed under the MIT License.
+
 

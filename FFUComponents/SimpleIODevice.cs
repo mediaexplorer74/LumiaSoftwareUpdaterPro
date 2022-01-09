@@ -917,10 +917,16 @@ label_16:
       idStream.WriteByte((byte) 1);
       BinaryReader binaryReader = new BinaryReader((Stream) idStream);
       this.curPosition = binaryReader.ReadInt64();
-      Guid guid = new Guid(binaryReader.ReadBytes(sizeof (Guid)));
+
+      int count = 32;//sizeof(Guid);
+      Guid guid = new Guid(binaryReader.ReadBytes(count));
+
       if (Guid.Empty != guid)
         throw new Win32Exception(1167);
-      this.DeviceUniqueID = new Guid(binaryReader.ReadBytes(sizeof (Guid)));
+
+      int count1 = 32;//sizeof(Guid);
+      
+      this.DeviceUniqueID = new Guid(binaryReader.ReadBytes(count1));
       this.DeviceFriendlyName = binaryReader.ReadString();
     }
 

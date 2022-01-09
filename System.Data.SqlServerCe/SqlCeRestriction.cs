@@ -15,7 +15,8 @@ namespace System.Data.SqlServerCe
 
     private static bool IsWebHosted()
     {
-      flag7 = false;
+      bool flag7 = false;
+
       foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
       {
         if (assembly.GetName().Name == "System.Web" && assembly.GlobalAssemblyCache)
@@ -27,8 +28,9 @@ namespace System.Data.SqlServerCe
             if (property != null)
             {
               object obj = property.GetValue((object) type, (object[]) null);
-              if (obj == null || !(obj is bool flag7))
+              if (obj == null || !(obj is bool)) // flag7
                 break;
+
               break;
             }
             break;
@@ -41,10 +43,14 @@ namespace System.Data.SqlServerCe
 
     private static bool IsExplicitlyEnabled()
     {
-      flag = false;
+      bool flag = false;
       object data = AppDomain.CurrentDomain.GetData("SQLServerCompactEditionUnderWebHosting");
-      if (data == null || !(data is bool flag))
-        ;
+        
+      if (data == null || !(data is bool)) //  flag
+      {
+         ;
+      }
+      
       return flag;
     }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--Project was exported from assembly: C:\ProgramData\Microsoft\Lumia Software Updater Pro\Bin\ContinuousUpdater.exe-->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,17 +7,18 @@
     <ProjectGuid>{C507888B-14A6-41F3-914C-F7D0013D1C6D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AssemblyName>ContinuousUpdater</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <ApplicationVersion>16.5.3001.0</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
     <RootNamespace>Microsoft.LsuPro.ContinuousUpdaterNamespace</RootNamespace>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,23 +33,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonClasses">
-      <HintPath>lib\CommonClasses.dll</HintPath>
-    </Reference>
-    <Reference Include="LumiaConnectivity">
-      <HintPath>lib\LumiaConnectivity.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Wp8DeviceUpdater">
-      <HintPath>lib\Wp8DeviceUpdater.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContinuousUpdaterExecutor.cs" />
     <Compile Include="ContinuousUpdater.cs" />
     <Compile Include="Updater.cs" />
     <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonClasses\CommonClasses.csproj">
+      <Project>{6de4211b-235a-4556-bbc0-6c48e576bb01}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LumiaConnectivity\LumiaConnectivity.csproj">
+      <Project>{93a3de8e-2b9b-4c77-986b-eea62b39bb4b}</Project>
+      <Name>LumiaConnectivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wp8DeviceUpdater\Wp8DeviceUpdater.csproj">
+      <Project>{d0f8980b-e701-493f-83fd-11582e8d4556}</Project>
+      <Name>Wp8DeviceUpdater</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

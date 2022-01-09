@@ -201,7 +201,8 @@ namespace Microsoft.LsuPro
     private static Dictionary<string, IList<string>> CreateProductCodesDictionary(
       UpdatePackage[] updatePackages)
     {
-      IEnumerable<\u003C\u003Ef__AnonymousType0<string, string>> source = ((IEnumerable<UpdatePackage>) updatePackages).GroupBy(package => new
+      //IEnumerable <\u003C\u003Ef__AnonymousType0<string, string> >
+      var source = ((IEnumerable<UpdatePackage>)updatePackages).GroupBy(package => new
       {
         ProductCode = package.ProductCode,
         PackageUseType = package.PackageUseType
@@ -343,7 +344,8 @@ namespace Microsoft.LsuPro
     private static Dictionary<string, IList<string>> CreateSoftwareVersionsDictionary(
       UpdatePackage[] updatePackages)
     {
-      IEnumerable<\u003C\u003Ef__AnonymousType1<string, string>> source = ((IEnumerable<UpdatePackage>) updatePackages).GroupBy(package => new
+      //IEnumerable<\u003C\u003Ef__AnonymousType1<string, string>> 
+      var source = ((IEnumerable<UpdatePackage>) updatePackages).GroupBy(package => new
       {
         SoftwareVersion = package.SoftwareVersion,
         PackageUseType = package.PackageUseType
@@ -431,7 +433,8 @@ namespace Microsoft.LsuPro
     private static Dictionary<string, IList<string>> CreateWinOsVersionsDictionary(
       UpdatePackage[] updatePackages)
     {
-      IEnumerable<\u003C\u003Ef__AnonymousType2<string, string>> source = ((IEnumerable<UpdatePackage>) updatePackages).GroupBy(package => new
+      //IEnumerable<\u003C\u003Ef__AnonymousType2<string, string>> 
+      var source = ((IEnumerable<UpdatePackage>) updatePackages).GroupBy(package => new
       {
         OsVersion = package.OsVersion,
         PackageUseType = package.PackageUseType

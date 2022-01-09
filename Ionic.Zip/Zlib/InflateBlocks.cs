@@ -87,9 +87,10 @@ namespace Ionic.Zlib
       int num3 = destinationIndex < this.readAt ? this.readAt - destinationIndex - 1 : this.end - destinationIndex;
       int num4;
       int num5;
+      int length1 = 0; //!
       while (true)
       {
-        int length1;
+        
         do
         {
           switch (this.mode)

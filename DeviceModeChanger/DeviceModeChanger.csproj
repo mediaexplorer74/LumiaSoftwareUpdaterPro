@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--Project was exported from assembly: C:\ProgramData\Microsoft\Lumia Software Updater Pro\Bin\DeviceModeChanger.exe-->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,17 +7,18 @@
     <ProjectGuid>{D76CCE6E-EC75-4B7E-A967-8FDC6126AB64}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AssemblyName>DeviceModeChanger</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <ApplicationVersion>16.5.3001.0</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
     <RootNamespace>Microsoft.LsuPro.DeviceModeChangerNamespace</RootNamespace>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,18 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonClasses">
-      <HintPath>lib\CommonClasses.dll</HintPath>
-    </Reference>
-    <Reference Include="LumiaConnectivity">
-      <HintPath>lib\LumiaConnectivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Nokia.Lucid">
-      <HintPath>lib\Nokia.Lucid.dll</HintPath>
-    </Reference>
-    <Reference Include="OnlineUpdatePackageManager">
-      <HintPath>lib\OnlineUpdatePackageManager.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -51,6 +40,27 @@
     <Compile Include="DeviceModeChanger.cs" />
     <Compile Include="DeviceModeChangerExecutor.cs" />
     <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonClasses\CommonClasses.csproj">
+      <Project>{6de4211b-235a-4556-bbc0-6c48e576bb01}</Project>
+      <Name>CommonClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LumiaConnectivity\LumiaConnectivity.csproj">
+      <Project>{93a3de8e-2b9b-4c77-986b-eea62b39bb4b}</Project>
+      <Name>LumiaConnectivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
+      <Project>{92b726c1-865a-4d66-b7c6-c58fac731cc0}</Project>
+      <Name>Nokia.Lucid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineUpdatePackageManager\OnlineUpdatePackageManager.csproj">
+      <Project>{b780a225-b006-484f-a049-3641243f9df8}</Project>
+      <Name>OnlineUpdatePackageManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -103,7 +103,7 @@ namespace System.Data.SqlServerCe
       set => this.Connection = (SqlCeConnection) value;
     }
 
-    public SqlCeConnection Connection
+    public new SqlCeConnection Connection
     {
       get => this.connection;
       set
@@ -127,7 +127,7 @@ namespace System.Data.SqlServerCe
 
     protected override DbParameterCollection DbParameterCollection => (DbParameterCollection) this.Parameters;
 
-    public SqlCeParameterCollection Parameters
+    public new SqlCeParameterCollection Parameters
     {
       get
       {
@@ -143,7 +143,7 @@ namespace System.Data.SqlServerCe
       set => this.Transaction = (SqlCeTransaction) value;
     }
 
-    public SqlCeTransaction Transaction
+    public new SqlCeTransaction Transaction
     {
       get => this.transaction;
       set
@@ -226,7 +226,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public SqlCeCommand()
     {
       NativeMethods.LoadNativeBinaries();
@@ -280,7 +280,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     protected override void Dispose(bool disposing)
     {
       lock (this.thisLock)
@@ -452,7 +452,7 @@ namespace System.Data.SqlServerCe
       }
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     private void CloseInternalCommand()
     {
@@ -783,7 +783,7 @@ namespace System.Data.SqlServerCe
         int indexColumnOrdinals = NativeMethods.GetIndexColumnOrdinals(pSeCursor, num2, ref cColumns, ref zero, this.pError);
         if (indexColumnOrdinals != 0)
           this.ProcessResults(indexColumnOrdinals);
-        this.indexColOrdinals = new uint[(IntPtr) cColumns];
+        this.indexColOrdinals = new uint[(int)(IntPtr) cColumns];
         fixed (uint* numPtr1 = this.indexColOrdinals)
         {
           uint* numPtr2 = (uint*) (void*) zero;
@@ -1045,7 +1045,7 @@ namespace System.Data.SqlServerCe
           this.ProcessResults(parameterInfo);
         if (columnCount == 0U)
           return (MetaData[]) null;
-        metaDataArray = new MetaData[(IntPtr) columnCount];
+        metaDataArray = new MetaData[(int)(IntPtr) columnCount];
         QPPARAMINFO qpparaminfo = new QPPARAMINFO();
         int num1 = Marshal.SizeOf(typeof (QPPARAMINFO));
         int num2 = 0;
@@ -1062,7 +1062,7 @@ namespace System.Data.SqlServerCe
             metaData.ordinal = qpparaminfo.iOrdinal;
             metaData.size = qpparaminfo.ulSize;
             metaData.typeMap = typeMap;
-            metaDataArray[(IntPtr) metaData.ordinal] = metaData;
+            metaDataArray[(int)(IntPtr) metaData.ordinal] = metaData;
           }
           finally
           {

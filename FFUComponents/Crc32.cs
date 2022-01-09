@@ -287,7 +287,7 @@ namespace FFUComponents
     {
       uint num = PartialCrc ^ uint.MaxValue;
       for (uint index = 0; index < nLength; ++index)
-        num = Crc32.m_RtlCrc32Table[(IntPtr) (uint) (((int) num ^ (int) lpBuffer[(int) index]) & (int) byte.MaxValue)] ^ num >> 8;
+        num = Crc32.m_RtlCrc32Table[(int)(IntPtr) (uint) (((int) num ^ (int) lpBuffer[(int) index]) & (int) byte.MaxValue)] ^ num >> 8;
       return num ^ uint.MaxValue;
     }
   }

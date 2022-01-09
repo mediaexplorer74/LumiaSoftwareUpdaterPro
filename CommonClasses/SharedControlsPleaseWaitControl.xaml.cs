@@ -21,17 +21,23 @@ namespace Microsoft.LsuPro.SharedControls
   {
     public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof (Text), typeof (string), typeof (PleaseWaitControl), (PropertyMetadata) new UIPropertyMetadata((object) nameof (Text)));
     public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(nameof (Description), typeof (string), typeof (PleaseWaitControl), (PropertyMetadata) new UIPropertyMetadata((object) nameof (Text)));
+    
     [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-    internal PleaseWaitControl PleaseWaitControlName;
+    //internal PleaseWaitControl PleaseWaitControlName;
+    
     [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-    internal Ellipse Ellipse1;
+    //internal Ellipse Ellipse1;
+    
     [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-    internal Ellipse Ellipse2;
+    //internal Ellipse Ellipse2;
+    
     [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-    internal Ellipse Ellipse3;
-    [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-    internal Ellipse Ellipse4;
-    private bool _contentLoaded;
+    //internal Ellipse Ellipse3;
+    
+        [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+    //internal Ellipse Ellipse4;
+    
+    //private bool _contentLoaded;
 
     public PleaseWaitControl() => this.InitializeComponent();
 
@@ -59,6 +65,7 @@ namespace Microsoft.LsuPro.SharedControls
         resource.Stop();
     }
 
+    /*
     [DebuggerNonUserCode]
     [GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
     public void InitializeComponent()
@@ -69,6 +76,7 @@ namespace Microsoft.LsuPro.SharedControls
       Application.LoadComponent((object) this, new Uri("/CommonClasses;component/sharedcontrols/pleasewaitcontrol.xaml", UriKind.Relative));
     }
 
+    
     [DebuggerNonUserCode]
     [GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -100,5 +108,6 @@ namespace Microsoft.LsuPro.SharedControls
           break;
       }
     }
-  }
+        */
+    }//class end
 }

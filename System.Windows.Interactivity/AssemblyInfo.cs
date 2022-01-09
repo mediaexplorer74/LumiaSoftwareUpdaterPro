@@ -7,7 +7,7 @@ using System.Security.Permissions;
 using System.Windows.Markup;
 
 [assembly: AssemblyTitle("System.Windows.Interactivity")]
-[assembly: Extension]
+//[assembly: Extension]
 [assembly: AssemblyDescription("System.Windows.Interactivity")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyProduct("System.Windows.Interactivity")]

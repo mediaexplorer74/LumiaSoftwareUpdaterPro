@@ -68,7 +68,7 @@ namespace System.Data.SqlServerCe
           dataAdapter.RowUpdating -= this._rowUpdatingHandler;
           this._rowUpdatingHandler = (SqlCeRowUpdatingEventHandler) null;
         }
-        this.DataAdapter = (DbDataAdapter) value;
+        this.DataAdapter = (SqlCeDataAdapter)(DbDataAdapter) value;
       }
     }
 

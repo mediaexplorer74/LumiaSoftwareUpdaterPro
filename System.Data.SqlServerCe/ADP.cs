@@ -250,7 +250,7 @@ namespace System.Data.SqlServerCe
       return sqlCeTableColumns;
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     internal static object BitConverterGetObject(
       SqlCeType ceType,
@@ -330,7 +330,7 @@ namespace System.Data.SqlServerCe
       return obj;
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     internal static byte[] BitConverterGetBytes(SqlCeType ceType, object val, ref int length)
     {

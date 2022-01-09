@@ -158,7 +158,7 @@ namespace System.Data.SqlServerCe
       NativeMethods.SafeDelete(ref this.pError);
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     protected override void Dispose(bool disposing)
     {
@@ -242,7 +242,7 @@ namespace System.Data.SqlServerCe
       return this.dbSchemaTable;
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     public unsafe bool Seek(DbSeekOptions dbSeekOptions, params object[] index)
     {
@@ -963,7 +963,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public override long GetBytes(
       int ordinal,
       long dataIndex,
@@ -1147,7 +1147,7 @@ namespace System.Data.SqlServerCe
       return this.fieldNameLookup.GetOrdinal(name);
     }
 
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     [SecurityCritical]
     public override string GetString(int ordinal)
     {
@@ -1158,7 +1158,7 @@ namespace System.Data.SqlServerCe
     }
 
     [SecurityCritical]
-    [SecurityTreatAsSafe]
+    //[SecurityTreatAsSafe]
     public override object GetValue(int ordinal)
     {
       if (this.IsDBNull(ordinal))
@@ -1197,7 +1197,7 @@ namespace System.Data.SqlServerCe
         return (object) DBNull.Value;
       if (typeof (byte[]) == info.typeMap.clrType)
       {
-        byte[] buffer = new byte[(IntPtr) info.size];
+        byte[] buffer = new byte[(int)(IntPtr) info.size];
         this.GetBytes(info, buffer, 0, 0, (int) info.size);
         return (object) buffer;
       }
